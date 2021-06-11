@@ -11,10 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Usuario;
 import com.example.demo.repository.UsuarioRepository;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@AllArgsConstructor
 public class UsuarioController {
 
 	@Autowired
@@ -22,7 +21,6 @@ public class UsuarioController {
 	
 	@GetMapping("/usuario")
 	public List<Usuario> getAllUsuarios(){
-		System.out.println("\nAqui esta o repositorio: "+repository+"\n");
 		return repository.findAll();
 	}
 	
