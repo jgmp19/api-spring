@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -13,8 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -31,7 +32,7 @@ public class Cliente {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="cliente_id")
-	private Set<Telefone> telefone;
+	private List<Telefone> telefone;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id", referencedColumnName = "id")
@@ -39,7 +40,6 @@ public class Cliente {
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="cliente_id")
-	private Set<Email> email;
-	
+	private List<Email> email;
 	
 }

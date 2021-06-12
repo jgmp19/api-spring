@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 
@@ -26,8 +28,12 @@ public class Telefone {
 	
 	private String numero;
 	private String tipo;
+	
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "cliente_id", insertable = false, updatable = false)
-	@JsonBackReference
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
+	
+	
+	
 }
