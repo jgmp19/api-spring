@@ -32,6 +32,5 @@ public class Endereco {
 	private String complemento;
 	
     @OneToOne(mappedBy = "endereco")
-    @JsonBackReference
 	private Cliente cliente;
 }

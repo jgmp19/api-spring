@@ -28,17 +28,17 @@ public class Cliente {
 	private Long id;
 	private String nome;
 	private String cpf;
+	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="cliente_id")
-	@JsonManagedReference
 	private Set<Telefone> telefone;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "endereco_id", referencedColumnName = "id")
-	@JsonManagedReference
 	private Endereco endereco;
+	
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name="cliente_id", referencedColumnName = "id")
-	@JsonManagedReference
+	@JoinColumn(name="cliente_id")
 	private Set<Email> email;
 	
 	
