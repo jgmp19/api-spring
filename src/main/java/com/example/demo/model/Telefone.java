@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -15,23 +15,19 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 @Entity
-@Table(name="endereco")
+@Table(name = "Telefone")
 @Data
-public class Endereco {
-
+public class Telefone {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 	
-	private String cep;
-	private String logradouro;
-	private String bairro;
-	private String cidade;
-	private String uf;
-	private String complemento;
-	
-    @OneToOne(mappedBy = "endereco")
-    @JsonBackReference
-	private Cliente cliente;
+	private String numero;
+	private String tipo;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cliente_id", insertable = false, updatable = false)
+	@JsonBackReference
+    private Cliente cliente;
 }

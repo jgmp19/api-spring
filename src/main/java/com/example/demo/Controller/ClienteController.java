@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.model.Usuario;
-import com.example.demo.repository.UsuarioRepository;
+import com.example.demo.model.Cliente;
+import com.example.demo.repository.ClienteRepository;
 
 @RestController
-public class UsuarioController {
+public class ClienteController {
 
 	@Autowired
-	UsuarioRepository repository;
+	ClienteRepository repository;
 	
-	@GetMapping("/usuario")
-	public List<Usuario> getAllUsuarios(){
+	@GetMapping("/cliente")
+	public List<Cliente> getAllUsuarios(){
 		return repository.findAll();
 	}
 	
-	@PostMapping("/usuario")
-	public Usuario saveUsuario(@RequestBody Usuario usuario) {
-		return repository.save(usuario);
+	@PostMapping("/cliente")
+	public Cliente saveUsuario(@RequestBody Cliente cliente) {
+		System.out.println("\n AQUI ESTOU \n"+cliente.toString());
+		return repository.save(cliente);
 	}
-	
 }
